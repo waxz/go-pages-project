@@ -1,0 +1,7 @@
+name = "pages-functions-go"
+compatibility_date = "2024-04-15"
+
+pages_build_output_dir = "./pages"
+#[build]
+#command = "make build"
+
