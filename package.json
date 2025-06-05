@@ -1,0 +1,16 @@
+{
+	"name": "worker-go",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+                "go-init":"go mod init example.com/m/v2 && go mod tidy",
+		"build-go": "if [ -d ./build ]; then rm -r ./build/* || true ;fi && go run github.com/syumai/workers/cmd/workers-assets-gen@v0.29.0 -mode=go && GOOS=js GOARCH=wasm go build -o ./build/app.wasm .",
+                "build": "if [ -d ./build ]; then rm -r ./build/* || true ;fi && go run github.com/syumai/workers/cmd/workers-assets-gen@v0.29.0 && tinygo build -o ./build/app.wasm -target wasm -no-debug ./...",
+		"deploy": "npx wrangler pages deploy",
+		"dev": "npx wrangler pages  dev",
+		"start": "npx wrangler pages dev"
+	},
+	"devDependencies": {
+		"wrangler": "^4.19.1"
+	}
+}
